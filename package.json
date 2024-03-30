@@ -1,4 +1,37 @@
 {
+  "devDependencies": {
+    "@slack/bolt": "3.17.1",
+    "@tsconfig/strictest": "2.0.5",
+    "eslint": "8.57.0",
+    "prettier": "3.2.5",
+    "tsup": "8.0.2",
+    "typescript": "5.4.3",
+    "typescript-eslint": "7.4.0"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./jsx-dev-runtime": {
+      "import": "./dist/jsx-dev-runtime.mjs",
+      "require": "./dist/jsx-dev-runtime.js"
+    },
+    "./jsx-runtime": {
+      "import": "./dist/jsx-runtime.mjs",
+      "require": "./dist/jsx-runtime.js"
+    }
+  },
   "name": "reslack",
-  "packageManager": "yarn@4.1.1"
+  "packageManager": "yarn@4.1.1",
+  "peerDependencies": {
+    "@slack/bolt": "~3.0.0"
+  },
+  "scripts": {
+    "build": "tsup --entry src/index.ts --entry src/jsx-dev-runtime.ts --entry src/jsx-runtime.ts --format cjs,esm --dts --external @slack/web-api",
+    "build:clean": "rm -rf dist && yarn build",
+    "prepack": "yarn build:clean"
+  },
+  "types": "./dist/index.d.ts",
+  "version": "0.1.0"
 }

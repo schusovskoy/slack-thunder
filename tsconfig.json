@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "checkJs": false,
+    "exactOptionalPropertyTypes": false,
+    "jsx": "preserve",
+    "moduleResolution": "node",
+    "noEmit": true,
+    "noImplicitReturns": false,
+    "noPropertyAccessFromIndexSignature": false,
+    "noUnusedParameters": false,
+    "resolveJsonModule": true,
+    "target": "esnext",
+    "verbatimModuleSyntax": true
+  },
+  "extends": "@tsconfig/strictest/tsconfig.json",
+  "include": ["src/**/*"]
+}

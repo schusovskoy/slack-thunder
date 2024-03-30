@@ -13,3 +13,6 @@ sandbox.ipynb
 
 # Generated
 dist
+
+# IDE
+.vscode
