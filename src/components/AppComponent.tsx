@@ -12,14 +12,19 @@ import { render } from '../render'
 
 type AppProps = {
   slackApp: App
+  handlersPath?: string
 }
 
-export const AppComponent: Component<AppProps> = async ({ slackApp }) => {
-  const appPath = path.join(process.cwd(), 'src/app')
+export const AppComponent: Component<AppProps> = async ({
+  slackApp,
+  handlersPath = 'src/app',
+}) => {
+  const appPath = path.join(process.cwd(), handlersPath)
   const handlers = await parseHandlers(appPath)
 
   const getHandler =
     (Component: HandlerComponent) => async (args: ArgsContextType) => {
+      if (!isOptionsArgs(args)) await args.ack?.()
       const eventType = isViewArgs(args) ? args.body.type : undefined
       const query = isOptionsArgs(args) ? args.options.value : undefined
 

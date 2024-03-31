@@ -12,7 +12,7 @@ type HandlerProps<T extends object = object> = {
 export type HandlerComponent = Component<Required<HandlerProps>>
 
 export type WithHandlerProps<
-  T extends object,
+  T extends object = object,
   U extends keyof HandlerProps = never,
 > = T & MakeRequired<HandlerProps<T>, U>
 
