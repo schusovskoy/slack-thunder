@@ -139,7 +139,7 @@ const HelloModal: Component = () => {
   )
 
 export const config: HandlersConfig = {
-	actions: [HelloMessage, HelloModal]
+  actions: [HelloMessage, HelloModal]
 }
 
 ```
