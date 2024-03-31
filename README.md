@@ -138,7 +138,7 @@ const HelloModal: Component = () => {
     </Modal>
   )
 
-export config: HandlersConfig = {
+export const config: HandlersConfig = {
 	actions: [HelloMessage, HelloModal]
 }
 
