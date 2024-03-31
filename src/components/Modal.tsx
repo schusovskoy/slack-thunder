@@ -8,7 +8,7 @@ type ModalProps = {
   title: ReslackElement | string
   close?: ReslackElement | string
   submit?: ReslackElement | string
-  callbackId?: Component | string
+  callbackId?: Component<never> | string
   notifyOnClose?: boolean
   clearOnClose?: boolean
   externalId?: string

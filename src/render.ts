@@ -180,7 +180,9 @@ const childrenProps = [
   'options',
   'initial_options',
   'option_groups',
+  'elements',
   'fields',
+  'blocks',
 ]
 const typeChildrenMap: Record<string, string> = {
   confirm: 'text',

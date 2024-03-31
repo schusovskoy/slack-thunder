@@ -5,7 +5,7 @@ import { render } from '../render'
 import { WebClient } from '@slack/web-api'
 
 type HomeProps = {
-  userId: string
+  userId?: string
   token?: string
   children?: ReslackNode
   externalId?: string
@@ -25,6 +25,12 @@ export const Home: Component<HomeProps> = async ({
     return { client: args.client, args }
   })()
 
+  if (!userId && !args?.context.userId) {
+    throw new Error(
+      'userId prop is required when rendering Home outside of a handler context.',
+    )
+  }
+  const finalUserId = (userId || args?.context.userId) as string
   const metadata = JSON.stringify(privateMetadata)
   const view = (await render(
     <ArgsContext.Provider value={args}>
@@ -34,5 +40,5 @@ export const Home: Component<HomeProps> = async ({
     </ArgsContext.Provider>,
   )) as View
 
-  await client.views.publish({ user_id: userId, view })
+  await client.views.publish({ user_id: finalUserId, view })
 }

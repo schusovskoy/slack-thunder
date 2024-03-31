@@ -4,12 +4,16 @@
     "allowSyntheticDefaultImports": true,
     "checkJs": false,
     "exactOptionalPropertyTypes": false,
-    "jsx": "preserve",
+    "jsx": "react-jsx",
+    "jsxImportSource": "@",
     "moduleResolution": "node",
     "noEmit": true,
     "noImplicitReturns": false,
     "noPropertyAccessFromIndexSignature": false,
     "noUnusedParameters": false,
+    "paths": {
+      "@/*": ["./src/*"]
+    },
     "resolveJsonModule": true,
     "target": "esnext",
     "verbatimModuleSyntax": true

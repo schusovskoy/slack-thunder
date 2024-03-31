@@ -25,7 +25,7 @@
   "name": "reslack",
   "packageManager": "yarn@4.1.1",
   "peerDependencies": {
-    "@slack/bolt": "~3.0.0"
+    "@slack/bolt": "^3.0.0"
   },
   "scripts": {
     "build": "tsup --entry src/index.ts --entry src/jsx-dev-runtime.ts --entry src/jsx-runtime.ts --format cjs,esm --dts --external @slack/web-api",
@@ -33,5 +33,15 @@
     "prepack": "yarn build:clean"
   },
   "types": "./dist/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "jsx-runtime": [
+        "./dist/jsx-runtime.d.ts"
+      ],
+      "jsx-dev-runtime": [
+        "./dist/jsx-dev-runtime.d.ts"
+      ]
+    }
+  },
   "version": "0.1.0"
 }

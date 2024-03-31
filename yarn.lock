@@ -3712,7 +3712,7 @@ __metadata:
     typescript: "npm:5.4.3"
     typescript-eslint: "npm:7.4.0"
   peerDependencies:
-    "@slack/bolt": ~3.0.0
+    "@slack/bolt": ^3.0.0
   languageName: unknown
   linkType: soft
 

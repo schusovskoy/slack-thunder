@@ -64,7 +64,7 @@ type InferStateFromDescriptor<T extends StateDescriptor> = {
 }
 type State<T extends StateDescriptor> = [
   InferStateFromDescriptor<T>,
-  Record<string, string>,
+  Record<keyof T[1], string>,
 ]
 
 export const useState = <T extends StateDescriptor>([
@@ -110,7 +110,7 @@ export const useState = <T extends StateDescriptor>([
     {},
   )
 
-  return [state, actionIds] as const
+  return [state, actionIds] as State<T>
 }
 
 export const createState = <T extends StateDescriptor>(...descriptor: T): T => {

@@ -39,7 +39,7 @@ const app = new App({
   token: process.env.SLACK_BOT_TOKEN,
 })
 
-;(async () => {
+void (async () => {
   // Render AppComponent
   await render(<AppComponent slackApp={app} />)
 
@@ -74,7 +74,9 @@ const FancyModal: Component = () => {
         <mrkdwn>*Some md text*</mrkdwn>
       </section>
       <divider />
-      <button action_id="some_action_id">Fancy Button</button>
+      <actions>
+        <button action_id="some_action_id">Fancy Button</button>
+      </actions>
     </Modal>
   )
 }
@@ -134,7 +136,9 @@ const HelloMessage: Component = () => (
 const HelloModal: Component = () => {
   return (
     <Modal title="Hello Modal">
-      <button action_id={HelloMessage}>Hello Button</button>
+      <actions>
+        <button action_id={HelloMessage}>Hello Button</button>
+      </actions>
     </Modal>
   )
 
@@ -221,7 +225,7 @@ The Home component is utilized to establish the layout of the user's Home Tab. F
 | Props | Description |
 | --- | --- |
 | **token**?: string | Slack Web API Token. If you use the Home component outside of the handler (for example, in a background job), you must provide your token. |
-| **userId**: string | ID of the user for whom you are setting the home tab. |
+| **userId**?: string | ID of the user for whom you are setting the home tab. |
 | **externalId**?: string | A custom identifier that must be unique for all views on a per-team basis. |
 | **privateMetadata**?: object | An optional object that will be sent to your app in `view_submission` and `block_actions` events. |
 | **children**?: ReslackNode | Any acceptable Block Kit blocks. |

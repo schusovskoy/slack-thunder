@@ -1,6 +1,6 @@
 import './jsx-types'
 export * from './components'
 export * from './entities'
-export { type WithHandlerProps } from './handlers'
+export { type WithHandlerProps, type HandlersConfig } from './handlers'
 export * from './hooks'
 export * from './render'
