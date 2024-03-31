@@ -29,7 +29,7 @@ For babel, set the `importSource` option of @babel/plugin-transform-react-jsx to
 
 ## Initialization
 
-```javascript
+```tsx
 import { App } from '@slack/bolt'
 import { AppComponent, render } from 'reslack'
 
@@ -53,24 +53,24 @@ const app = new App({
 
 The fundamental building block of Reslack is a component. A component is a function (which can be async) that takes a props object and maps it to JSX UI.
 
-```typescript
+```tsx
 const HelloMessage: Component<{ name: string }> = async ({ name }) => {
   await doSomeAsyncStuff()
   return (
     <Message token="your_slack_token" channel="C123ABC456">
-	    Hello, {name}
-	  </Message>
+      Hello, {name}
+    </Message>
   )
 }
 ```
 
 A crucial special case of a component is a handler component. This entity handles user actions in Slack and produces a result. For instance, you might want to display a modal in response to a user's button click. That's when a handler component is useful.
 
-```typescript
+```tsx
 const FancyModal: Component = () => {
   return (
     <Modal title="Fancy Modal">
-	    <section>
+      <section>
         <mrkdwn>*Some md text*</mrkdwn>
       </section>
       <divider />
@@ -82,7 +82,7 @@ const FancyModal: Component = () => {
 
 Reslack uses HandlerConfig objects to connect handler components and Slack events. This object describes which events a component should react to.
 
-```typescript
+```tsx
 export const config: HandlersConfig = {
   actions: [{ pattern: 'SomeBlockKitAction', component: FancyModal }],
 }
