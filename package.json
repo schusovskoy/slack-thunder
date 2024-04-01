@@ -1,4 +1,5 @@
 {
+  "description": "slack-thunder is a library that helps you build Block Kit interfaces using JSX.",
   "devDependencies": {
     "@slack/bolt": "3.17.1",
     "@tsconfig/strictest": "2.0.5",
@@ -22,6 +23,14 @@
       "require": "./dist/jsx-runtime.js"
     }
   },
+  "keywords": [
+    "slack",
+    "bolt",
+    "jsx",
+    "react",
+    "bot",
+    "block-kit"
+  ],
   "name": "slack-thunder",
   "packageManager": "yarn@4.1.1",
   "peerDependencies": {
@@ -35,13 +44,13 @@
   "types": "./dist/index.d.ts",
   "typesVersions": {
     "*": {
-      "jsx-runtime": [
-        "./dist/jsx-runtime.d.ts"
-      ],
       "jsx-dev-runtime": [
         "./dist/jsx-dev-runtime.d.ts"
+      ],
+      "jsx-runtime": [
+        "./dist/jsx-runtime.d.ts"
       ]
     }
   },
-  "version": "0.1.0"
+  "version": "0.1.1"
 }

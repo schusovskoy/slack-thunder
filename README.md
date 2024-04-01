@@ -9,6 +9,8 @@ Developing complex applications with @slack/bolt can be challenging using the st
 Many agree that a composable component architecture is convenient for building UIs. This is where **slack-thunder** comes in. **slack-thunder** is a library that helps you build Block Kit interfaces using JSX. It employs familiar concepts like reusable components and hooks so you already kinda know how to use it.
 **slack-thunder** can be incrementally integrated into existing projects.
 
+You can view the example application [here](https://github.com/schusovskoy/slack-thunder-example).
+
 ## Getting Started
 
 Install using your preferred package manager:
