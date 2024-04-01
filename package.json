@@ -22,7 +22,7 @@
       "require": "./dist/jsx-runtime.js"
     }
   },
-  "name": "reslack",
+  "name": "slack-thunder",
   "packageManager": "yarn@4.1.1",
   "peerDependencies": {
     "@slack/bolt": "^3.0.0"

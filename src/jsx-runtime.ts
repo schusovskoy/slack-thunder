@@ -1,13 +1,13 @@
 import {
-  type ReslackElementType,
-  type ReslackElement,
-  Fragment as ReslackFragment,
+  type ThunderElementType,
+  type ThunderElement,
+  Fragment as ThunderFragment,
 } from './entities'
 
 export const jsx = (
-  type: ReslackElementType,
+  type: ThunderElementType,
   props: Record<string, unknown>,
-): ReslackElement => {
+): ThunderElement => {
   const propsCopy = { ...props }
   const children = propsCopy.children
   if (children && Array.isArray(children)) {
@@ -18,4 +18,4 @@ export const jsx = (
 
 export const jsxs = jsx
 
-export const Fragment = ReslackFragment
+export const Fragment = ThunderFragment

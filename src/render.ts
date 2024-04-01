@@ -1,16 +1,16 @@
 import {
   type Context,
-  type ReslackNode,
+  type ThunderNode,
   Fragment,
   isActionComponent,
   FragmentKind,
   ProviderKind,
 } from './entities'
 
-export const render = (node: ReslackNode): Promise<unknown> => renderImpl(node)
+export const render = (node: ThunderNode): Promise<unknown> => renderImpl(node)
 
 const renderImpl = async (
-  node: ReslackNode,
+  node: ThunderNode,
   renderRef: symbol = Symbol(),
 ): Promise<unknown> => {
   // See Components section for the details about context snapshot
@@ -74,10 +74,10 @@ const renderImpl = async (
       }
 
       const children = (() => {
-        type Node = NonNullable<ReslackNode>
+        type Node = NonNullable<ThunderNode>
         if (!Array.isArray(value)) return value as Node
         // Filter out nulls, undefineds and booleans to support conditional rendering
-        return (value as ReslackNode[]).filter(
+        return (value as ThunderNode[]).filter(
           a => a !== null && !['undefined', 'boolean'].includes(typeof a),
         )
       })()
@@ -129,7 +129,7 @@ const renderImpl = async (
 
   // Fragments
   if (node.type.kind === FragmentKind) {
-    const props = node.props as { children?: ReslackNode }
+    const props = node.props as { children?: ThunderNode }
     const children = props.children || []
     const normalized = Array.isArray(children) ? children : [children]
     /**
@@ -151,7 +151,7 @@ const renderImpl = async (
     const outerContextValue =
       contextSnapshot.get(node.type.context) ?? node.type.context.defaultValue
 
-    const props = node.props as { value: unknown; children: ReslackNode }
+    const props = node.props as { value: unknown; children: ThunderNode }
     contextSnapshot.set(node.type.context, props.value)
     const rendered = await renderImpl(props.children, renderRef)
     contextSnapshot.set(node.type.context, outerContextValue)

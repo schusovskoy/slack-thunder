@@ -1,5 +1,5 @@
 import type { View } from '@slack/bolt'
-import type { Component, ReslackNode } from '../entities'
+import type { Component, ThunderNode } from '../entities'
 import { ArgsContext, useArgs } from '../hooks'
 import { render } from '../render'
 import { WebClient } from '@slack/web-api'
@@ -7,7 +7,7 @@ import { WebClient } from '@slack/web-api'
 type HomeProps = {
   userId?: string
   token?: string
-  children?: ReslackNode
+  children?: ThunderNode
   externalId?: string
   privateMetadata?: object
 }

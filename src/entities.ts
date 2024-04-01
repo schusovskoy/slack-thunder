@@ -1,27 +1,27 @@
-export type ReslackElementType =
+export type ThunderElementType =
   | string
   | Component
   | Fragment
   | Provider<unknown>
 
-export type ReslackElement = {
-  type: ReslackElementType
+export type ThunderElement = {
+  type: ThunderElementType
   props: object
 }
 
-export type ReslackNode =
+export type ThunderNode =
   | null
   | undefined
   | void
   | string
   | number
   | boolean
-  | ReslackElement
-  | ReslackNode[]
+  | ThunderElement
+  | ThunderNode[]
 
 export type Component<Props extends object = object> = (
   props: Props,
-) => ReslackNode | Promise<ReslackNode>
+) => ThunderNode | Promise<ThunderNode>
 
 export type ActionComponent<Props extends object = object> =
   Component<Props> & { id: string; statefull?: boolean }
@@ -30,7 +30,7 @@ type ExoticComponent<
   T extends symbol,
   Props extends object = object,
   Config extends object = object,
-> = { bivariant(props: Props): ReslackNode }['bivariant'] & { kind: T } & Config
+> = { bivariant(props: Props): ThunderNode }['bivariant'] & { kind: T } & Config
 
 export const FragmentKind = Symbol('Fragment')
 export type Fragment = ExoticComponent<typeof FragmentKind>
@@ -45,7 +45,7 @@ export type Context<T> = {
 export const ProviderKind = Symbol('Provider')
 export type Provider<T> = ExoticComponent<
   typeof ProviderKind,
-  { value: T; children: ReslackNode },
+  { value: T; children: ThunderNode },
   { context: Context<T> }
 >
 

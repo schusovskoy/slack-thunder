@@ -1,13 +1,13 @@
 import type { View } from '@slack/bolt'
-import type { Component, ReslackElement, ReslackNode } from '../entities'
+import type { Component, ThunderElement, ThunderNode } from '../entities'
 import { ArgsContext, isBlockActionArgs, useArgs } from '../hooks'
 import { render } from '../render'
 
 type ModalProps = {
-  children?: ReslackNode
-  title: ReslackElement | string
-  close?: ReslackElement | string
-  submit?: ReslackElement | string
+  children?: ThunderNode
+  title: ThunderElement | string
+  close?: ThunderElement | string
+  submit?: ThunderElement | string
   callbackId?: Component<never> | string
   notifyOnClose?: boolean
   clearOnClose?: boolean

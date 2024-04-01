@@ -1,4 +1,4 @@
-# reslack
+# slack-thunder
 
 Developing complex applications with @slack/bolt can be challenging using the standard approach (Block Kit). You may encounter the following issues:
 
@@ -6,32 +6,34 @@ Developing complex applications with @slack/bolt can be challenging using the st
 - Inconvenient form management
 - Backend-centric design
 
-Many agree that a composable component architecture is convenient for building UIs. This is where Reslack comes in. Reslack is a library that helps you build Block Kit interfaces using JSX. It employs familiar concepts like reusable components and hooks so you already kinda know how to use it.
-Reslack can be incrementally integrated into existing projects. While it's not yet feature-full in terms of API, the library design is straightforward and the project welcomes contributions.
+Many agree that a composable component architecture is convenient for building UIs. This is where **slack-thunder** comes in. **slack-thunder** is a library that helps you build Block Kit interfaces using JSX. It employs familiar concepts like reusable components and hooks so you already kinda know how to use it.
+**slack-thunder** can be incrementally integrated into existing projects.
 
 ## Getting Started
 
 Install using your preferred package manager:
 
 ```bash
-yarn add reslack @slack/bolt
+yarn add slack-thunder @slack/bolt
 ```
 
-In addition, you need to configure your transpiler to use the jsx-runtime from reslack. If you're using tsc, add the following lines to your tsconfig.json file:
+In addition, you need to configure your transpiler to use the jsx-runtime from **slack-thunder**. If you're using tsc, add the following lines to your tsconfig.json file:
 
 ```json
 "jsx": "react-jsx",
-"jsxImportSource": "reslack"
+"jsxImportSource": "slack-thunder"
 
 ```
 
-For babel, set the `importSource` option of @babel/plugin-transform-react-jsx to `reslack`. Refer to the [importSource Documentation](https://babeljs.io/docs/babel-plugin-transform-react-jsx#importsource) for more details.
+For babel, set the `importSource` option of @babel/plugin-transform-react-jsx to `slack-thunder`. Refer to the [importSource Documentation](https://babeljs.io/docs/babel-plugin-transform-react-jsx#importsource) for more details.
+
+Don't hesitate to open an issue if you encounter difficulties with integration.
 
 ## Initialization
 
 ```tsx
 import { App } from '@slack/bolt'
-import { AppComponent, render } from 'reslack'
+import { AppComponent, render } from 'slack-thunder'
 
 // Create @slack/bolt App
 const app = new App({
@@ -51,7 +53,7 @@ void (async () => {
 
 ## Handler Components
 
-The fundamental building block of Reslack is a component. A component is a function (which can be async) that takes a props object and maps it to JSX UI.
+The fundamental building block of **slack-thunder** is a component. A component is a function (which can be async) that takes a props object and maps it to JSX UI.
 
 ```tsx
 const HelloMessage: Component<{ name: string }> = async ({ name }) => {
@@ -82,7 +84,7 @@ const FancyModal: Component = () => {
 }
 ```
 
-Reslack uses HandlerConfig objects to connect handler components and Slack events. This object describes which events a component should react to.
+**slack-thunder** uses HandlerConfig objects to connect handler components and Slack events. This object describes which events a component should react to.
 
 ```tsx
 export const config: HandlersConfig = {
@@ -90,7 +92,7 @@ export const config: HandlersConfig = {
 }
 ```
 
-To allow Reslack to find your HandlerConfig objects, place them inside one of the modules in the `src/app` folder (you can specify a different path using the `handlersPath` prop of `AppComponent`).
+To allow **slack-thunder** to find your HandlerConfig objects, place them inside one of the modules in the `src/app` folder (you can specify a different path using the `handlersPath` prop of `AppComponent`).
 
 ```
 .
@@ -159,7 +161,7 @@ Handler components can have specific properties. For instance:
 You can use the `WithHandlerProps` type to utilize these properties.
 
 ```tsx
-import type { WithHandlerProps } from 'reslack'
+import type { WithHandlerProps } from 'slack-thunder'
 
 type FormSubmissionProps = WithHandlerProps<
   { data?: Data },
@@ -198,7 +200,7 @@ The Message component is used to send, edit, or delete messages (either text or 
 | **responseType**?: 'in_channel' \| 'ephemeral' \| 'replace' \| 'delete' | Response type ([Message Responses Doc](https://api.slack.com/interactivity/handling#message_responses)). |
 | **onSuccess**?: (data: ChatUpdateResponse \| ChatPostMessageResponse) => void | Callback to run on success. |
 | **onFail**?: (error: Error) => void | Callback to run on fail. |
-| **children**?: ReslackNode | String or any acceptable Block Kit blocks. |
+| **children**?: ThunderNode | String or any acceptable Block Kit blocks. |
 
 ### Modal
 
@@ -207,15 +209,15 @@ The Modal component is utilized to display a modal.
 <!-- prettier-ignore -->
 | Prop | Description |
 | --- | --- |
-| **title**: ReslackElement | string | Modal title. Can be a `string` or `plain_text` element. |
-| **close**?: ReslackElement | string | An optional `string` or `plain_text` element that defines the text displayed in the close button. |
-| **submit**?: ReslackElement | string | Defines the text displayed in the submit button. |
+| **title**: ThunderElement | string | Modal title. Can be a `string` or `plain_text` element. |
+| **close**?: ThunderElement | string | An optional `string` or `plain_text` element that defines the text displayed in the close button. |
+| **submit**?: ThunderElement | string | Defines the text displayed in the submit button. |
 | **callbackId**?: Component | string | An identifier to recognize interactions and submissions of this particular view. Can be a `HandlerComponent`. |
 | **notifyOnClose**?: boolean | Indicates whether Slack will send your request URL a `view_closed` event when a user clicks the close button. Defaults to `false`. |
 | **clearOnClose**?: boolean | When set to `true`, clicking on the close button will clear all views in a modal and close it. Defaults to `false`. |
 | **externalId**?: string | A custom identifier that must be unique for all views on a per-team basis. |
 | **privateMetadata**?: object | An optional object that will be sent to your app in `view_submission` and `block_actions` events. |
-| **children**?: ReslackNode | Any acceptable Block Kit blocks. |
+| **children**?: ThunderNode | Any acceptable Block Kit blocks. |
 
 ### Home
 
@@ -228,7 +230,7 @@ The Home component is utilized to establish the layout of the user's Home Tab. F
 | **userId**?: string | ID of the user for whom you are setting the home tab. |
 | **externalId**?: string | A custom identifier that must be unique for all views on a per-team basis. |
 | **privateMetadata**?: object | An optional object that will be sent to your app in `view_submission` and `block_actions` events. |
-| **children**?: ReslackNode | Any acceptable Block Kit blocks. |
+| **children**?: ThunderNode | Any acceptable Block Kit blocks. |
 
 ### Options and OptionGroups
 
@@ -258,7 +260,7 @@ export const config: HandlersConfig = {
 <!-- prettier-ignore -->
 | Props | Descriptions |
 | --- | --- |
-| **children**: ReslackNode | `option` elements for Options component or `option_group` for OptionGroups. |
+| **children**: ThunderNode | `option` elements for Options component or `option_group` for OptionGroups. |
 
 ## Hooks
 
@@ -358,7 +360,7 @@ Refer to [jsx-types.ts](src/jsx-types.ts#L25) to view the available elements, th
  */
 workflow_button: {
   /** text: plain_text */
-  children: ReslackNode
+  children: ThunderNode
 ```
 
 In this example, the `workflow_button` element can be used in `Messages` and can contain `Section` and `Actions` blocks. Its `children` prop is an alias for the `text` field and can only be a `plain_text` element.

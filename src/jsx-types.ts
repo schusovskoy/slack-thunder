@@ -2,8 +2,8 @@ import type {
   Component,
   Fragment,
   Provider,
-  ReslackElement,
-  ReslackNode,
+  ThunderElement,
+  ThunderNode,
 } from './entities'
 
 declare global {
@@ -19,34 +19,34 @@ declare global {
     }
 
     type ElementType = string | Fragment | Provider<unknown> | Component<never>
-    type Element = ReslackElement
-    type ElementChildrenAttribute = { children: ReslackNode }
+    type Element = ThunderElement
+    type ElementChildrenAttribute = { children: ThunderNode }
 
     type IntrinsicElements = {
       confirm: {
         /** plain_text */
-        title: ReslackElement | string
+        title: ThunderElement | string
         /** text: plain_text */
-        children: ReslackNode
+        children: ThunderNode
         /** plain_text */
-        confirm: ReslackElement | string
+        confirm: ThunderElement | string
         /** plain_text */
-        deny: ReslackElement | string
+        deny: ThunderElement | string
         style?: 'primary' | 'danger'
       }
       option: {
         /** text: mrkdwn (radio, checkboxes), plain_text */
-        children: ReslackNode
+        children: ThunderNode
         value: string
         /** plain_text */
-        description?: ReslackElement | string
+        description?: ThunderElement | string
         url?: string
       }
       option_group: {
         /** plain_text */
-        label: ReslackElement | string
+        label: ThunderElement | string
         /** options: option */
-        children: ReslackNode
+        children: ThunderNode
       }
       /**
        * Blocks: Section, Actions
@@ -54,11 +54,11 @@ declare global {
        * */
       button: {
         /** text: plain_text */
-        children: ReslackNode
+        children: ThunderNode
         value?: string
         style?: 'primary' | 'danger'
         /** confirm */
-        confirm?: ReslackElement
+        confirm?: ThunderElement
         accessibility_label?: string
         action_id: string | Component<never>
         url?: string
@@ -70,11 +70,11 @@ declare global {
       checkboxes: {
         action_id: string | Component<never>
         /** options: option */
-        children: ReslackNode
+        children: ThunderNode
         /** option */
-        initial_options?: ReslackNode
+        initial_options?: ThunderNode
         /** confirm */
-        confirm?: ReslackElement
+        confirm?: ThunderElement
         focus_on_load?: boolean
       }
       /**
@@ -85,10 +85,10 @@ declare global {
         action_id: string | Component<never>
         initial_date?: string
         /** confirm */
-        confirm?: ReslackElement
+        confirm?: ThunderElement
         focus_on_load?: boolean
         /** plain_text */
-        placeholder?: ReslackElement | string
+        placeholder?: ThunderElement | string
       }
       /**
        * Blocks: Actions, Input
@@ -98,7 +98,7 @@ declare global {
         action_id: string | Component<never>
         initial_date_time?: number
         /** confirm */
-        confirm?: ReslackElement
+        confirm?: ThunderElement
         focus_on_load?: boolean
       }
       /**
@@ -111,7 +111,7 @@ declare global {
         dispatch_action_config?: DispatchActionConfig
         focuse_on_load?: boolean
         /** plain_text */
-        placeholder?: ReslackElement | string
+        placeholder?: ThunderElement | string
       }
       /**
        * Can itself be a block
@@ -122,7 +122,7 @@ declare global {
         image_url: string
         alt_text: string
         /** plain_text (only when using as a block) */
-        title?: ReslackElement | string
+        title?: ThunderElement | string
         /** only when using as a block */
         block_id?: string
       }
@@ -133,17 +133,17 @@ declare global {
       multi_static_select: {
         action_id: string | Component<never>
         /** option */
-        options?: ReslackNode
+        options?: ThunderNode
         /** option_group */
-        option_groups?: ReslackNode
+        option_groups?: ThunderNode
         /** option */
-        initial_options?: ReslackNode
+        initial_options?: ThunderNode
         /** confirm */
-        confirm?: ReslackElement
+        confirm?: ThunderElement
         max_selected_items?: number
         focus_on_load?: boolean
         /** plain_text */
-        placeholder?: ReslackElement | string
+        placeholder?: ThunderElement | string
       }
       /**
        * Blocks: Section, Actions, Input
@@ -153,13 +153,13 @@ declare global {
         action_id: string | Component<never>
         min_query_length?: number
         /** option */
-        initial_options?: ReslackNode
+        initial_options?: ThunderNode
         /** confirm */
-        confirm?: ReslackElement
+        confirm?: ThunderElement
         max_selected_items?: number
         focus_on_load?: boolean
         /** plain_text */
-        placeholder?: ReslackElement | string
+        placeholder?: ThunderElement | string
       }
       /**
        * Blocks: Section, Actions, Input
@@ -169,11 +169,11 @@ declare global {
         action_id: string | Component<never>
         initial_users?: string[]
         /** confirm */
-        confirm?: ReslackElement
+        confirm?: ThunderElement
         max_selected_items?: number
         focus_on_load?: boolean
         /** plain_text */
-        placeholder?: ReslackElement | string
+        placeholder?: ThunderElement | string
       }
       /**
        * Blocks: Section, Actions, Input
@@ -184,12 +184,12 @@ declare global {
         initial_conversations?: string[]
         default_to_current_conversation?: boolean
         /** confirm */
-        confirm?: ReslackElement
+        confirm?: ThunderElement
         max_selected_items?: number
         filter?: ConversationsFilter
         focus_on_load?: boolean
         /** plain_text */
-        placeholder?: ReslackElement | string
+        placeholder?: ThunderElement | string
       }
       /**
        * Blocks: Section, Actions, Input
@@ -199,11 +199,11 @@ declare global {
         action_id: string | Component<never>
         initial_channels?: string[]
         /** confirm */
-        confirm?: ReslackElement
+        confirm?: ThunderElement
         max_selected_items?: number
         focus_on_load?: boolean
         /** plain_text */
-        placeholder?: ReslackElement | string
+        placeholder?: ThunderElement | string
       }
       /**
        * Blocks: Input
@@ -218,7 +218,7 @@ declare global {
         dispatch_action_config?: DispatchActionConfig
         focuse_on_load?: boolean
         /** plain_text */
-        placeholder?: ReslackElement | string
+        placeholder?: ThunderElement | string
       }
       /**
        * Blocks: Section, Actions
@@ -227,9 +227,9 @@ declare global {
       overflow: {
         action_id: string | Component<never>
         /** options: option */
-        children: ReslackNode
+        children: ThunderNode
         /** confirm */
-        confirm?: ReslackElement
+        confirm?: ThunderElement
       }
       /**
        * Blocks: Input
@@ -244,7 +244,7 @@ declare global {
         dispatch_action_config?: DispatchActionConfig
         focuse_on_load?: boolean
         /** plain_text */
-        placeholder?: ReslackElement | string
+        placeholder?: ThunderElement | string
       }
       /**
        * Blocks: Section, Actions, Input
@@ -253,11 +253,11 @@ declare global {
       radio_buttons: {
         action_id: string | Component<never>
         /** options: option */
-        children: ReslackNode
+        children: ThunderNode
         /** option */
-        initial_option?: ReslackElement
+        initial_option?: ThunderElement
         /** confirm */
-        confirm?: ReslackElement
+        confirm?: ThunderElement
         focus_on_load?: boolean
       }
       /**
@@ -267,16 +267,16 @@ declare global {
       static_select: {
         action_id: string | Component<never>
         /** option */
-        options?: ReslackNode
+        options?: ThunderNode
         /** option_group */
-        option_groups?: ReslackNode
+        option_groups?: ThunderNode
         /** option */
-        initial_option?: ReslackElement
+        initial_option?: ThunderElement
         /** confirm */
-        confirm?: ReslackElement
+        confirm?: ThunderElement
         focus_on_load?: boolean
         /** plain_text */
-        placeholder?: ReslackElement | string
+        placeholder?: ThunderElement | string
       }
       /**
        * Blocks: Section, Actions, Input
@@ -285,13 +285,13 @@ declare global {
       external_select: {
         action_id: string | Component<never>
         /** option */
-        initial_option?: ReslackElement
+        initial_option?: ThunderElement
         min_query_length?: number
         /** confirm */
-        confirm?: ReslackElement
+        confirm?: ThunderElement
         focus_on_load?: boolean
         /** plain_text */
-        placeholder?: ReslackElement | string
+        placeholder?: ThunderElement | string
       }
       /**
        * Blocks: Section, Actions, Input
@@ -301,10 +301,10 @@ declare global {
         action_id: string | Component<never>
         initial_user?: string
         /** confirm */
-        confirm?: ReslackElement
+        confirm?: ThunderElement
         focus_on_load?: boolean
         /** plain_text */
-        placeholder?: ReslackElement | string
+        placeholder?: ThunderElement | string
       }
       /**
        * Blocks: Section, Actions, Input
@@ -315,12 +315,12 @@ declare global {
         initial_conversation?: string
         default_to_current_conversation?: boolean
         /** confirm */
-        confirm?: ReslackElement
+        confirm?: ThunderElement
         response_url_enabled?: boolean
         filter?: ConversationsFilter
         focus_on_load?: boolean
         /** plain_text */
-        placeholder?: ReslackElement | string
+        placeholder?: ThunderElement | string
       }
       /**
        * Blocks: Section, Actions, Input
@@ -330,11 +330,11 @@ declare global {
         action_id: string | Component<never>
         initial_channel?: string
         /** confirm */
-        confirm?: ReslackElement
+        confirm?: ThunderElement
         response_url_enabled?: boolean
         focus_on_load?: boolean
         /** plain_text */
-        placeholder?: ReslackElement | string
+        placeholder?: ThunderElement | string
       }
       /**
        * Blocks: Section, Actions, Input
@@ -344,10 +344,10 @@ declare global {
         action_id: string | Component<never>
         initial_time?: string
         /** confirm */
-        confirm?: ReslackElement
+        confirm?: ThunderElement
         focus_on_load?: boolean
         /** plain_text */
-        placeholder?: ReslackElement | string
+        placeholder?: ThunderElement | string
         timezone?: string
       }
       /**
@@ -360,7 +360,7 @@ declare global {
         dispatch_action_config?: DispatchActionConfig
         focuse_on_load?: boolean
         /** plain_text */
-        placeholder?: ReslackElement | string
+        placeholder?: ThunderElement | string
       }
       /**
        * Blocks: Section, Actions
@@ -368,7 +368,7 @@ declare global {
        */
       workflow_button: {
         /** text: plain_text */
-        children: ReslackNode
+        children: ThunderNode
         workflow: {
           trigger: {
             url: string
@@ -380,25 +380,25 @@ declare global {
       }
       plain_text: {
         /** text: string */
-        children: ReslackNode
+        children: ThunderNode
         emoji?: boolean
         verbatim?: boolean
       }
       mrkdwn: {
         /** text: string */
-        children: ReslackNode
+        children: ThunderNode
         emoji?: boolean
         verbatim?: boolean
       }
       modal: {
         /** plain_text */
-        title: ReslackElement | string
+        title: ThunderElement | string
         /** plain_text */
-        close?: ReslackElement | string
+        close?: ThunderElement | string
         /** plain_text */
-        submit?: ReslackElement | string
+        submit?: ThunderElement | string
         /** blocks */
-        children: ReslackNode
+        children: ThunderNode
         private_metadata?: string
         callback_id?: string | Component<never>
         clear_on_close?: boolean
@@ -407,24 +407,24 @@ declare global {
       }
       home: {
         /** blocks */
-        children: ReslackNode
+        children: ThunderNode
         private_metadata?: string
         callback_id?: string
         external_id?: string
       }
       header: {
         /** text: plain_text */
-        children: ReslackNode
+        children: ThunderNode
         block_id?: string
       }
       actions: {
         /** elements */
-        children: ReslackNode
+        children: ThunderNode
         block_id?: string
       }
       context: {
         /** elements: plain_text, mrkdwn, image */
-        children: ReslackNode
+        children: ThunderNode
         block_id?: string
       }
       divider: {
@@ -432,33 +432,33 @@ declare global {
       }
       input: {
         /** plain_text */
-        label: ReslackElement | string
+        label: ThunderElement | string
         /** element */
-        children: ReslackElement
+        children: ThunderElement
         block_id?: string
         /** plain_text */
-        hint?: ReslackElement | string
+        hint?: ThunderElement | string
         optional?: boolean
         dispatch_action?: boolean
       }
       section: {
         /** text: plain_text, mrkdwn */
-        children: ReslackNode
+        children: ThunderNode
         block_id?: string
         /** plain_text, mrkdwn */
-        fields?: ReslackNode
-        accessory?: ReslackElement
+        fields?: ThunderNode
+        accessory?: ThunderElement
       }
       video: {
         alt_text: string
         author_name?: string
         block_id?: string
         /** plain_text */
-        description?: ReslackElement | string
+        description?: ThunderElement | string
         provider_icon_url?: string
         provider_name?: string
         /** title: plain_text */
-        children: ReslackNode
+        children: ThunderNode
         title_url?: string
         thumbnail_url: string
         video_url: string

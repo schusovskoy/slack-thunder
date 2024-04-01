@@ -3,7 +3,7 @@ import {
   type ChatPostMessageResponse,
   type ChatUpdateResponse,
 } from '@slack/web-api'
-import type { Component, ReslackNode } from '../entities'
+import type { Component, ThunderNode } from '../entities'
 import { useArgs, ArgsContext } from '../hooks'
 import type { Block } from '@slack/bolt'
 import { render } from '../render'
@@ -12,7 +12,7 @@ type MessageProps = {
   token?: string
   channel?: string
   messageTs?: string
-  children?: ReslackNode
+  children?: ThunderNode
   responseType?: 'in_channel' | 'ephemeral' | 'replace' | 'delete'
   onSuccess?: (data: ChatUpdateResponse | ChatPostMessageResponse) => void
   onFail?: (error: Error) => void

@@ -1,4 +1,4 @@
-import type { Component, ReslackNode } from '../entities'
+import type { Component, ThunderNode } from '../entities'
 import { ArgsContext, isOptionsArgs, useArgs } from '../hooks'
 import { render } from '../render'
 import type {
@@ -9,7 +9,7 @@ import type {
 
 type OptionsProps = {
   /** options */
-  children: ReslackNode
+  children: ThunderNode
 }
 
 export const Options: Component<OptionsProps> = async ({ children }) => {

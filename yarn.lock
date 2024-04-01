@@ -3700,22 +3700,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"reslack@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "reslack@workspace:."
-  dependencies:
-    "@slack/bolt": "npm:3.17.1"
-    "@tsconfig/strictest": "npm:2.0.5"
-    eslint: "npm:8.57.0"
-    prettier: "npm:3.2.5"
-    tsup: "npm:8.0.2"
-    typescript: "npm:5.4.3"
-    typescript-eslint: "npm:7.4.0"
-  peerDependencies:
-    "@slack/bolt": ^3.0.0
-  languageName: unknown
-  linkType: soft
-
 "resolve-from@npm:^4.0.0":
   version: 4.0.0
   resolution: "resolve-from@npm:4.0.0"
@@ -3993,6 +3977,22 @@ __metadata:
   checksum: 10c0/41602dce540e46d599edba9d9860193398d135f7ff72cab629db5171516cfae628d21e7bfccde1bbfdf11c48726bc2a6d1a8fb8701125852fbfda7cf19c6aa83
   languageName: node
   linkType: hard
+
+"slack-thunder@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "slack-thunder@workspace:."
+  dependencies:
+    "@slack/bolt": "npm:3.17.1"
+    "@tsconfig/strictest": "npm:2.0.5"
+    eslint: "npm:8.57.0"
+    prettier: "npm:3.2.5"
+    tsup: "npm:8.0.2"
+    typescript: "npm:5.4.3"
+    typescript-eslint: "npm:7.4.0"
+  peerDependencies:
+    "@slack/bolt": ^3.0.0
+  languageName: unknown
+  linkType: soft
 
 "slash@npm:^3.0.0":
   version: 3.0.0
